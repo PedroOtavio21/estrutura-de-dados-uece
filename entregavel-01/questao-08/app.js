@@ -1,26 +1,26 @@
-import ArrayStack from "../questao-01/ArrayStack.js"
+import ArrayStack from "../questao-01/ArrayStack.js";
 
-function parentesesBemFormados(expressao){
-    let pilha = new ArrayStack()
+function parentesesBemFormados(expressao) {
+    const pilha = new ArrayStack();
 
-    for (let caractere of expressao){
-        if (caractere === '('){
-            pilha.push(caractere)
-        } else if (caractere == ')') {
-                if (!pilha){
-                    return False
-                }
-                pilha.pop()
+    for (const caractere of expressao) {
+        if (caractere === '(') {
+            pilha.push(caractere);
+        } else if (caractere === ')') {
+            if (pilha.isEmpty()) {
+                return false;
+            }
+            pilha.pop();
         }
     }
 
-    return pilha.isEmpty()
+    return pilha.isEmpty();
 }
 
-expressao = "(2 + 3) * (5 - (1 + 2))"
+const expressao = "(2 + 3) * (5 - (1 + 2))";
 
-if (parentesesBemFormados(expressao)){
-    console.log("Os parênteses estão bem utilizados!")
-} else{
-    console.log("Os parênteses não estão sendo bem utilizados.")
-}
+console.log(
+    parentesesBemFormados(expressao)
+        ? "Os parênteses estão bem formados!"
+        : "Os parênteses NÃO estão bem formados."
+);

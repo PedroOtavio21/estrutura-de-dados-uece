@@ -1,31 +1,41 @@
 export default class ArrayQueue {
     constructor() {
-        this.values = [];
+        this._data = [];
+        this._front = 0;
     }
 
     isEmpty() {
-        return this.values.length === 0;
+        return this.size() === 0;
     }
 
-    enqueue(value) {
-        this.values.push(value);
+    enqueue(item) {
+        this._data.push(item);
     }
 
     dequeue() {
         if (this.isEmpty()) {
-            throw new Error("QueueUnderflow: Não é possível desenfileirar de uma fila vazia.");
+            throw new Error("dequeue from empty queue");
         }
-        return this.values.shift();
+
+        const item = this._data[this._front];
+        this._front++;
+
+        if (this._front > Math.floor(this._data.length / 2)) {
+            this._data = this._data.slice(this._front);
+            this._front = 0;
+        }
+
+        return item;
     }
 
     first() {
         if (this.isEmpty()) {
-            throw new Error("QueueEmpty: Fila está vazia. Não há primeiro elemento.");
+            throw new Error("first from empty queue");
         }
-        return this.values[0];
+        return this._data[this._front];
     }
 
     size() {
-        return this.values.length;
+        return this._data.length - this._front;
     }
 }

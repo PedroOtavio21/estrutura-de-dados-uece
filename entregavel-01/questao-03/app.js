@@ -1,15 +1,17 @@
-function transfer(S, T){
-    let temp = []
-    temp = [...S] // Copia o conteúdo do array para o valor temporário
-    while (temp.length > 0){
-        const element = temp.pop()
-        T.push(element)
+import ArrayStack from "../questao-01/ArrayStack.js";
+
+function transfer(S, T) {
+    while (!S.isEmpty()) {
+        T.push(S.pop());
     }
 }
 
-const S = [5, 4, 3, 2, 1]
-const T = []
+const S = new ArrayStack();
+const T = new ArrayStack();
 
-transfer(S, T)
-console.log(`Pilha S: ${S}`)
-console.log(`Pilha T: ${T}`)
+[1, 2, 3, 4, 5].forEach(x => S.push(x));
+
+transfer(S, T);
+
+console.log("Pilha S após transferir:", S);
+console.log("Pilha T após receber:", T);

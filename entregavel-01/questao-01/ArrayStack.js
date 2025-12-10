@@ -1,31 +1,31 @@
 export default class ArrayStack {
     constructor() {
-        this.values = [];
+        this._data = [];
+    }
+
+    length() {
+        return this._data.length;
     }
 
     isEmpty() {
-        return this.values.length === 0;
+        return this._data.length === 0;
     }
 
-    size() {
-        return this.values.length;
-    }
-
-    push(value) {
-        this.values.push(value);
+    push(e) {
+        this._data.push(e);
     }
 
     pop() {
         if (this.isEmpty()) {
-            throw new Error("StackUnderflow: Não é possível remover de uma pilha vazia.");
+            throw new Error("pop from empty stack");
         }
-        return this.values.pop();
+        return this._data.pop();
     }
 
     top() {
         if (this.isEmpty()) {
-            throw new Error("StackEmpty: Pilha está vazia. Não há elemento de topo.");
+            throw new Error("top from empty stack");
         }
-        return this.values[this.values.length - 1];
+        return this._data[this._data.length - 1];
     }
 }

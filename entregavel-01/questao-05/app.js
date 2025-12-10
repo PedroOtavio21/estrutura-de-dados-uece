@@ -1,20 +1,23 @@
-function inverteLista(lista){
-    let pilha = []
-    let listaInvertiva = []
+import ArrayStack from "../questao-01/ArrayStack.js";
 
-    for (const value of lista){
-        pilha.push(value)
+function inverteLista(lista) {
+    const stack = new ArrayStack();
+
+    for (const item of lista) {
+        stack.push(item);
     }
 
-    while (pilha.length > 0){
-        listaInvertiva.push(pilha.pop())
+    const invertida = [];
+
+    while (!stack.isEmpty()) {
+        invertida.push(stack.pop());
     }
 
-    return listaInvertiva
+    return invertida;
 }
 
-let lista = [1, 2, 3, 4, 5]
-console.log(`Antes de inversão: ${lista}`)
+let l = [1, 2, 3, 4, 5];
+console.log("Original:", l);
 
-lista = inverteLista(lista)
-console.log(`Após inversão: ${lista}`)
+l = inverteLista(l);
+console.log("Invertida:", l);

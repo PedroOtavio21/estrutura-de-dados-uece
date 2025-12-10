@@ -1,56 +1,53 @@
-
 export default class ArrayDeque {
     constructor() {
-        this.values = [];
+        this.items = [];
     }
 
-    isEmpty() {
-        return this.values.length === 0;
+    addFirst(item) {
+        this.items.unshift(item);
     }
 
-    addFirst(value) {
-        this.values.unshift(value);
-    }
-
-    addLast(value) {
-        this.values.push(value);
+    addLast(item) {
+        this.items.push(item);
     }
 
     removeFirst() {
         if (this.isEmpty()) {
-            throw new Error("DequeUnderflow: Não é possível remover do início de um Deque vazio.");
+            throw new Error("remove_first from empty deque");
         }
-        return this.values.shift();
+        return this.items.shift();
     }
 
     removeLast() {
         if (this.isEmpty()) {
-            throw new Error("DequeUnderflow: Não é possível remover do fim de um Deque vazio.");
+            throw new Error("remove_last from empty deque");
         }
-        return this.values.pop();
+        return this.items.pop();
+    }
+
+    isEmpty() {
+        return this.items.length === 0;
     }
 
     size() {
-        return this.values.length;
+        return this.items.length;
     }
 
     peekFirst() {
         if (this.isEmpty()) {
-            throw new Error("DequeEmpty: Deque está vazio. Não há primeiro elemento.");
+            throw new Error("peek_first from empty deque");
         }
-        return this.values[0];
+        return this.items[0];
     }
 
     peekLast() {
         if (this.isEmpty()) {
-            throw new Error("DequeEmpty: Deque está vazio. Não há último elemento.");
+            throw new Error("peek_last from empty deque");
         }
-        return this.values[this.values.length - 1];
+        return this.items[this.items.length - 1];
     }
 
-    showAllElements() {
-        for (let value of this.values) {
-            console.log(value);
-        }
+    toString() {
+        return `ArrayDeque(${this.items.join(", ")})`;
     }
 }

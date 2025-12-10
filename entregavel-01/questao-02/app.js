@@ -1,23 +1,23 @@
-import ArrayStack from "../questao-01/ArrayStack.js"
+import ArrayStack from "../questao-01/ArrayStack.js";
 
-let stack = new ArrayStack()
+const pilha = new ArrayStack();
 
-stack.push(5)
-stack.push(3)
-stack.pop()
-stack.push(2)
-stack.push(8)
-stack.pop()
-stack.pop()
-stack.push(9)
-stack.push(1)
-stack.pop()
-stack.push(7)
-stack.push(6)
-stack.pop()
-stack.pop()
-stack.push(4)
-stack.pop()
-stack.pop()
+pilha.push(5);
+pilha.push(3);
+pilha.pop();
+pilha.push(2);
+pilha.push(8);
+pilha.pop();
+pilha.pop();
+pilha.push(9);
+pilha.push(1);
+pilha.pop();
+pilha.push(7);
+pilha.push(6);
+pilha.pop();
+pilha.pop();
+pilha.push(4);
+pilha.pop();
+pilha.pop();
 
-console.log(stack)
+console.log("Estado final da pilha:", pilha);
